@@ -16,24 +16,18 @@ struct ContentView: View {
     private var units = ["seconds","minutes","hours", "days"]
     private var valores = [0: 1, 1: 60, 2: 3600, 3: 86400]
     var result: Double{
-        var retorno: Double = 0.0
         var valorASegundos: Double = 0.0
-        if(typeOfConvertion != 0){
-            valorASegundos = Double(valueToConvert/Double(valores[typeOfConvertion] ?? 0))
-        }
+        valorASegundos = Double(valueToConvert*Double(valores[typeOfConvertion] ?? 0))
+        
+        
         if(typeOfConvertion == typeOfResult){
-            retorno = valueToConvert
-        }
-        else if (typeOfConvertion < typeOfResult){
-            valorASegundos = valueToConvert
-            retorno = valorASegundos / Double(valores[typeOfResult] ?? 0)
+            return valueToConvert
         }
         else{
-            retorno = valorASegundos * Double(valores[typeOfResult] ?? 0)
+            return valorASegundos / Double(valores[typeOfResult] ?? 0)
         }
         
         
-        return retorno
     }
 
     
